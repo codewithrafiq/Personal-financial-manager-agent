@@ -9,6 +9,9 @@ def analyze_expenses(expenses: str) -> str:
     Analyze a list of expenses and give insights.
     Input should be a natural language description of expenses.
     """
+    print("+-+-" * 20)
+    print("Useing tool: analyze_expenses")
+    print("+-+-" * 20)
     return f"Expense analysis completed for: {expenses}"
 
 
@@ -17,7 +20,9 @@ def add_transaction(amount: float, category: str, note: str = "") -> str:
     """
     Add a financial transaction.
     """
-    # Later: save to DB
+    print("+-+-" * 20)
+    print("Useing tool: add_transaction")
+    print("+-+-" * 20)
     return f"Added transaction: {amount} in {category}. Note: {note}"
 
 
@@ -26,6 +31,9 @@ def monthly_summary(month: str) -> str:
     """
     Summarize spending for a given month.
     """
+    print("+-+-" * 20)
+    print("Useing tool: monthly_summary")
+    print("+-+-" * 20)
     return f"Summary generated for {month}"
 
 
@@ -44,6 +52,9 @@ def our_services() -> str:
         "Advice on Savings",
         "Advice on Budgets",
     ]
+    print("+-+-" * 20)
+    print("Useing tool: our_services")
+    print("+-+-" * 20)
     return "Our services include: " + ", ".join(services)
 
 
@@ -59,6 +70,9 @@ def advice_on_expenses() -> str:
 
     and if user provide this information then we can give them advice on expenses then call save_expense_advice function to save the advice in the database
     """
+    print("+-+-" * 20)
+    print("Useing tool: advice_on_expenses")
+    print("+-+-" * 20)
     return "To provide advice on expenses, please share details about your spending patterns, financial goals, and budget."
 
 
@@ -67,7 +81,9 @@ def save_expense_advice(advice: str) -> str:
     """
     Save the advice on expenses to the database.
     """
-    # Later: save to DB
+    print("+-+-" * 20)
+    print("Useing tool: save_expense_advice")
+    print("+-+-" * 20)
     return f"Expense advice saved: {advice}"
 
 
