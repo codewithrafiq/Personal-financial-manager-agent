@@ -1,7 +1,14 @@
-from langchain_ollama import ChatOllama
+from langchain_openai import ChatOpenAI
 
-from app.config import MODEL_NAME, OLLAMA_BASE_URL
+from app.config import LLAMA_SERVER_URL
 
 
 def get_llm():
-    return ChatOllama(base_url=OLLAMA_BASE_URL, model=MODEL_NAME, temperature=0.2)
+    # Connect to llama-server's OpenAI-compatible endpoint.
+    # Start the server first: see start.py or run.md
+    return ChatOpenAI(
+        model="local",
+        base_url=LLAMA_SERVER_URL,
+        api_key="not-needed",
+        temperature=0.2,
+    )

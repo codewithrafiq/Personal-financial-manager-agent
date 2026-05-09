@@ -3,6 +3,6 @@ uvicorn
 langchain
 langchain-community
 langchain-core
-langchain-ollama
+langchain-openai
 pydantic
 python-dotenv

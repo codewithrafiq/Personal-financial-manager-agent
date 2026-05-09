@@ -1,0 +1,6 @@
+{
+  "watch": ["app", "docker"],
+  "ext": "py,dockerfile",
+  "ignore": [".git", "venv", "models", "__pycache__", "*.pyc"],
+  "exec": "docker compose -f docker/docker-compose.yml down && (docker images -q docker-api | grep -q . && docker image rm docker-api || echo 'Image docker-api does not exist, skipping removal') && docker compose -f docker/docker-compose.yml up --build"
+}

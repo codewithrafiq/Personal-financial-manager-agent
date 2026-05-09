@@ -1,14 +1,40 @@
-version: "3.9"
-
 services:
-  ollama:
-    image: ollama/ollama:latest
-    container_name: ollama
+  llama-cpp:
+    image: ghcr.io/ggml-org/llama.cpp:server
+    container_name: llama-cpp
     ports:
-      - "11434:11434"
+      - "8080:8080"
     volumes:
-      - ollama:/root/.ollama
+      - ../models:/models
+    command:
+      - "--model"
+      - "/models/model.gguf"
+      - "--host"
+      - "0.0.0.0"
+      - "--port"
+      - "8080"
+      - "--ctx-size"
+      - "4096"
+      - "--parallel"
+      - "1"
     restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl -sf http://localhost:8080/health || exit 1"]
+      interval: 15s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
 
-volumes:
-  ollama:
+  api:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.api
+    container_name: personal-finance-api
+    ports:
+      - "8000:8000"
+    environment:
+      LLAMA_SERVER_URL: "http://llama-cpp:8080/v1"
+    depends_on:
+      llama-cpp:
+        condition: service_healthy
+    restart: unless-stopped

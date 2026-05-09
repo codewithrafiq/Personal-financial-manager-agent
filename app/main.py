@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from langchain.messages import HumanMessage
+from langchain_core.messages import HumanMessage
 
 from app.agent import get_agent
 from app.schemas import QueryRequest
-from app.tools import get_final_text
+from app.tools.utils import get_final_text
 
 app = FastAPI(title="Personal Financial Manager API", version="0.1.0")
 
